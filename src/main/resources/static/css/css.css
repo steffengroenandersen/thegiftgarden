@@ -39,3 +39,41 @@ ul.logo{
 .homepage-welcome{
     margin-left: 350px;
 }
+
+.background-image {
+  background-image: url(https://images.prismic.io/wab-website/1d124712-76dc-47c6-a72e-0a0a38968b89_Group+64.png); /* Replace with your image URL */
+  background-size: cover;
+  background-position: center;
+  height: 75vh; /* Set the height to cover the entire viewport */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.content {
+  text-align: center;
+  color: #ffffff; /* Set the text color to your desired color */
+}
+
+/* Add additional CSS styles to customize the appearance of the text and form elements as needed */
+.form-group {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+label {
+  flex-basis: 30%; /* Adjust the width of the labels as needed */
+}
+
+input {
+  flex-basis: 50%; /* Adjust the width of the input fields as needed */
+  height: 30px;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+.button{
+}
