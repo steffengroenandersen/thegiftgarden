@@ -1,0 +1,30 @@
+body{
+    margin:0px;
+}
+.navbar{
+    background-color: #133A34;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-item{
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+ul.nav-links{
+    color: #40C1AC;
+}
+ul.logo{
+    color: #40C1AC;
+}
+.logo-the-gift{
+    font-weight: bold;
+}
