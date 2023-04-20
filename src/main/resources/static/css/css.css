@@ -1,15 +1,16 @@
 body{
     margin:0px;
+    padding: 0px;
 }
 .navbar{
     background-color: #133A34;
-    display:flex;
+    display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .nav-links{
-    display:flex;
+    display: flex;
     justify-content: space-between;
     align-items: center;
 }
@@ -22,9 +23,19 @@ body{
 ul.nav-links{
     color: #40C1AC;
 }
+
 ul.logo{
     color: #40C1AC;
 }
 .logo-the-gift{
     font-weight: bold;
+}
+
+.homepage-splash{
+    display: flex;
+    justify-content: space-between;
+}
+
+.homepage-welcome{
+    margin-left: 350px;
 }

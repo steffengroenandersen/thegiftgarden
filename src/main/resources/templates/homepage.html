@@ -2,17 +2,29 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>TheGiftGarden</title>
+    <title>The Gift Garden - Plant Your Dreams</title>
     <link rel="stylesheet" th:href="@{/css/css.css}" href="../static/css/css.css">
 </head>
 <body>
     <nav class="navbar">
         <ul class="logo"><span class="logo-the-gift">THE GIFT</span> <br/> GARDEN</ul>
         <ul class="nav-links">
-            <ul class="nav-item">Create Account</ul>
-            <ul class="nav-item">Login</ul>    
+            <ul><a class="nav-item" th:href="@{createaccount}" href="createaccount.html">Create Account</a></ul>
+            <ul><a class="nav-item" th:href="@{login}" href="login.html">Login</a></ul>
         </ul>
     </nav>
+    <div class="homepage-splash">
+        <span><img src="../static/images/thegreengarden-homepage-splash.jpg" style="height: 427px"></span>
+        <span><img src="../static/images/thegreengarden-homepage-splash-1.jpg" style="height: 427px"></span>
+        <span><img src="../static/images/thegreengarden-homepage-splash-2.jpg" style="height: 427px"></span>
+    </div>
+    <div class="homepage-welcome">
+        <h1>Plant Your Dreams - Share Your Inspiration</h1>
+        <h2>Let Your Creativity Bloom with The Green Garden - Share Your Wishes and Inspire Others</h2>
+        <button><a th:href="@{createaccount}" href="createaccount.html">Create your list</a></button>
+        <button><a th:href="@{login}" href="login.html">Login</button>
+    </div>
+
 
 </body>
 </html>
