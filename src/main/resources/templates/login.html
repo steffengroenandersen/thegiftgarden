@@ -6,13 +6,23 @@
   <link rel="stylesheet" th:href="@{/css/css.css}" href="../static/css/css.css">
 
 <body>
-<nav class="navbar">
-  <ul class="logo"><span class="logo-the-gift">THE GIFT</span> <br/> GARDEN</ul>
-  <ul class="nav-links">
-    <ul><a class="nav-item" th:href="@{createaccount}" href="createaccount.html">Create Account</a></ul>
-    <ul><a class="nav-item" th:href="@{login}" href="login.html">Login</a></ul>
-  </ul>
-</nav>
+  <nav class="navbar">
+    <ul class="logo"><span class="logo-the-gift">THE GIFT</span> <br/> GARDEN</ul>
+    <ul class="nav-links">
+      <ul><a class="nav-item" th:href="@{createaccount}" href="createaccount.html">Create Account</a></ul>
+      <ul><a class="nav-item" th:href="@{login}" href="login.html">Login</a></ul>
+    </ul>
+  </nav>
+  <div class="background-image">
+    <div class="content">
+      <h1>Sign in to The Green Garden Community</h1>
+      <form action="loginuser" method="post">
+        <input type="email" id="email" name="email" placeholder="Email" required>
+        <input type="password" id="password" name="password" placeholder="Password" required>
+        <input type="submit" value="Login" class="button">
+      </form>
+
+
 
 </body>
 </html>

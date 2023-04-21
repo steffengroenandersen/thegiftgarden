@@ -5,6 +5,7 @@ public class User {
 
     // VARIABLES
 
+    private int userID;
     private String firstName;
     private String lastName;
     private String email;
@@ -15,7 +16,8 @@ public class User {
     public User() {
     }
 
-    public User(String firstName, String lastName, String email, String password) {
+    public User(int userID, String firstName, String lastName, String email, String password) {
+        this.userID = userID;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -23,6 +25,14 @@ public class User {
     }
 
     // METHODS
+
+    public int getUserID() {
+        return userID;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
+    }
 
     public String getFirstName() {
         return firstName;

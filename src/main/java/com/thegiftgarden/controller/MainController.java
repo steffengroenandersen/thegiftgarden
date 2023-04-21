@@ -1,11 +1,16 @@
 package com.thegiftgarden.controller;
 
+import jakarta.servlet.http.HttpSession;
+import org.springframework.ui.Model;
 import com.thegiftgarden.model.User;
 import com.thegiftgarden.repository.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class MainController {
@@ -14,19 +19,49 @@ public class MainController {
     UserRepository userRepository;
 
 
-    // HOMEPAGE
+    // HOMEPAGE ///////////////////////////////////////
     @GetMapping("/")
     public String homepage(){
         return "homepage";
     }
 
-    // LOGIN
+    // LOGIN //////////////////////////////////////////
     @GetMapping("/login")
-    public String login(){
+    public String login(Model model){
+        // CREATE NEW USER
+        User user = new User();
+        model.addAttribute("user", user);
         return "login";
     }
 
-    // CREATE ACCOUNT
+    @PostMapping("/loginuser")
+    public String loginUser(
+            @RequestParam() String checkEmail,
+            @RequestParam() String checkPassword,
+            Model model,
+            HttpSession session){
+
+        // Check if user exits
+        List<User> userList = userRepository.getAllUsers();
+        for(User checkUser : userList){
+            String actualEmail = checkUser.getEmail();
+            String actualPassword = checkUser.getPassword();
+
+            if(checkEmail.equals(actualEmail) && checkPassword.equals(actualPassword)){
+                // Add the user to the session and model
+                model.addAttribute("currentUser", checkUser);
+                session.setAttribute("currentUser", checkUser);
+                return "redirect:/garden/" + checkUser.getUserID();
+                // redirect to the new page
+            }
+
+
+        }
+
+        return "redirect:/garden/";
+    }
+
+    // CREATE ACCOUNT //////////////////////////////////
     @GetMapping("/createaccount")
     public String createAccount(){
         return "createaccount";
@@ -49,10 +84,14 @@ public class MainController {
          userRepository.addUser(newUser);
 
 
-
-
         return "redirect:/login";
     }
+
+    @GetMapping("/garden")
+    public String garden(){
+        return "garden";
+    }
+
 
 
 
