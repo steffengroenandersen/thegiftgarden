@@ -58,7 +58,24 @@ public class UserRepository {
 
     // ADD NEW USERS TO DATABASE
     public void addUser(User newUser){
-        // TODO: Create a SQL statement
-        
+        try{
+            // Connect to database
+            Connection connection = DriverManager.getConnection(DB_HOSTNAME, DB_USERNAME, DB_PASSWORD);
+            final String CREATE_QUERY = "INSERT INTO users" +
+                    "(user_email, user_password, user_firstname, user_lastname)" +
+                    "VALUES (?, ?, ?, ?)";
+            
+            PreparedStatement preparedStatement = connection.prepareStatement(CREATE_QUERY);
+
+            preparedStatement.setString(1, newUser.getEmail());
+            preparedStatement.setString(2, newUser.getPassword());
+            preparedStatement.setString(3, newUser.getFirstName());
+            preparedStatement.setString(4, newUser.getLastName());
+
+            preparedStatement.executeQuery();
+            
+        } catch(SQLException e){
+            System.out.println("Error: Could not connect to database and addUser.");
+        }
     }
 }
