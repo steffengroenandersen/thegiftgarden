@@ -13,14 +13,14 @@ public class UserRepository {
 
 
     // DATABASE CONNECTION VARIABLES
-    @Value("${spring.datasource.url}")
-    private String DB_HOSTNAME;
+    //@Value("${spring.datasource.url}")
+    private String DB_HOSTNAME = "jdbc:mysql://thegiftgardendatabase.mysql.database.azure.com:3306/thegiftgardendatabase";
 
-    @Value("${spring.datasource.username}")
-    private String DB_USERNAME;
+    //@Value("${spring.datasource.username}")
+    private String DB_USERNAME = "thegiftgardenuser";
 
-    @Value("${spring.datasource.password}")
-    private String DB_PASSWORD;
+    //@Value("${spring.datasource.password}")
+    private String DB_PASSWORD = "Sesame80";
 
 
     // FETCH ALL USERS FROM DATABASE
@@ -72,10 +72,11 @@ public class UserRepository {
             preparedStatement.setString(3, newUser.getFirstName());
             preparedStatement.setString(4, newUser.getLastName());
 
-            preparedStatement.executeQuery();
+            preparedStatement.executeUpdate();
             
         } catch(SQLException e){
             System.out.println("Error: Could not connect to database and addUser.");
+            e.printStackTrace();
         }
     }
 }
