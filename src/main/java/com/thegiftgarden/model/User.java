@@ -6,22 +6,24 @@ public class User {
     // VARIABLES
 
     private int userID;
-    private String firstName;
-    private String lastName;
     private String email;
     private String password;
+
+    private String firstName;
+    private String lastName;
 
     // CONSTRUCTORS
 
     public User() {
     }
 
-    public User(int userID, String firstName, String lastName, String email, String password) {
+    public User(int userID, String email, String password, String firstName, String lastName) {
         this.userID = userID;
-        this.firstName = firstName;
-        this.lastName = lastName;
         this.email = email;
         this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+
     }
 
     // METHODS

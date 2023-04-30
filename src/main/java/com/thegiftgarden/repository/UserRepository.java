@@ -4,6 +4,7 @@ import com.thegiftgarden.model.User;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +26,33 @@ public class UserRepository {
     // FETCH ALL USERS FROM DATABASE
     public List<User> getAllUsers(){
         List userList = new ArrayList();
-
+        
+        try{
+            // Connect to database
+            Connection connection = DriverManager.getConnection(DB_HOSTNAME, DB_USERNAME, DB_PASSWORD);
+            Statement statement = connection.createStatement();
+            
+            // Create preparedStatement query
+            final String SQL_QUERY = "SELECT * FROM users";
+            ResultSet resultSet = statement.executeQuery(SQL_QUERY);
+            
+            // Get data from database and add to ArrayList
+            while(resultSet.next()){
+                int userID = resultSet.getInt(1);
+                String userEmail = resultSet.getString(2);
+                String userPassword = resultSet.getString(3);
+                String userFirstName = resultSet.getString(4);
+                String userLastName = resultSet.getString(5);
+                
+                User user = new User(userID, userEmail, userPassword, userFirstName, userLastName);
+                userList.add(user);
+            }
+            
+        } catch(SQLException e){
+            System.out.println("Error: Could not connect to database and getAllUsers.");
+            e.printStackTrace();
+        }
+        
         return userList;
     }
 
